@@ -99,8 +99,7 @@ static void usart_start_tx_dma(void)
         /* Clear all flags */
         __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_TC_FLAG_INDEX(&huart2));
         __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_HT_FLAG_INDEX(&huart2));
-        __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_DME_FLAG_INDEX(&huart2));
-        __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_FE_FLAG_INDEX(&huart2));
+        __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_GI_FLAG_INDEX(&huart2));
         __HAL_DMA_CLEAR_FLAG(huart2.hdmatx, __HAL_DMA_GET_TE_FLAG_INDEX(&huart2));
 
         /* Configure DMA */
