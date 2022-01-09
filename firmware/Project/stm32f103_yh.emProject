@@ -33,26 +33,31 @@
     <folder Name="Internal Files">
       <configuration Name="Common" build_exclude_from_build="Yes" />
       <configuration Name="Internal" build_exclude_from_build="No" />
-      <configuration Name="Target 1 External" build_exclude_from_build="No" />
       <configuration Name="Target 1" build_exclude_from_build="No" />
       <file file_name="../Libraries/startup/SEGGER_THUMB_Startup.s" />
       <file file_name="../Libraries/startup/STM32F1xx_Startup.s" />
       <file file_name="../Libraries/startup/STM32F103xx_Vectors.s" />
+      <file file_name="../Libraries/startup/STM32F103xx_Registers.xml" />
+      <file file_name="../Libraries/startup/STM32F103ZE_MemoryMap.xml" />
+      <file file_name="../Libraries/startup/STM32F1xx_Flash.icf" />
     </folder>
     <configuration
       CMSIS_CORE="Yes"
       Name="Target 1"
       arm_architecture="v7M"
-      arm_compiler_variant="SEGGER"
+      arm_compiler_variant="gcc"
       arm_core_type="Cortex-M3"
       arm_endian="Little"
       arm_fpu_type=""
+      arm_linker_variant="SEGGER"
       arm_simulator_memory_simulation_parameter="RX 08000000,00080000,FFFFFFFF;RWX 20000000,00010000,CDCDCDCD"
       arm_target_device_name="STM32F103ZE"
       c_preprocessor_definitions="USE_HAL_DRIVER;STM32F103xE"
       c_user_include_directories="../Libraries/stm32f1xx_hal_driver/Inc/Legacy;../Libraries/stm32f1xx_hal_driver/Inc;../Libraries/threadx/common/inc;../Libraries/threadx/ports/cortex_m3/gnu/inc;../Libraries/cmsis/Include;../Libraries/cmsis/Device/ST/STM32F1xx/Include;../Src/boot;../Src/common;../Src/drivers;../Src/threadx"
       gcc_c_language_standard="c11"
       gcc_cplusplus_language_standard="c++11"
+      link_linker_script_file="E:/1_HX_DOC/gitproject/stm32f1xx_st/firmware/Libraries/startup/STM32F1xx_Flash.icf"
+      linker_memory_map_file="E:/1_HX_DOC/gitproject/stm32f1xx_st/firmware/Libraries/startup/STM32F103ZE_MemoryMap.xml"
       linker_section_placements_segments="FLASH1 RX 0x08000000 0x00080000;RAM1 RWX 0x20000000 0x00010000" />
     <configuration
       Name="External Keil"
@@ -317,34 +322,23 @@
       <file file_name="../Src/boot/stm32f1xx_hal_conf.h" />
       <file file_name="../Src/boot/stm32f1xx_hal_msp.c" />
       <file file_name="../Src/boot/stm32f1xx_it.c" />
-      <file file_name="../Src/boot/system_stm32f1xx.c" />
+      <file file_name="../Src/boot/system_stm32f1xx.c">
+        <configuration
+          Name="Target 1 Internal"
+          build_exclude_from_build="No" />
+      </file>
       <file file_name="../Src/boot/task.c" />
     </folder>
     <folder Name="common">
       <file file_name="../Src/common/maths.c" />
     </folder>
-    <configuration
-      Name="Target 1 External"
-      armasm_cl_cpu="Cortex-M3"
-      armasm_cl_fpu="SoftVFP"
-      armclang_cl_cpu="Cortex-M3"
-      armclang_cl_enable_debug_info="Yes"
-      armclang_cl_optimization_level="None"
-      asm_additional_options="--pd;&quot;__MICROLIB SETA 1&quot;"
-      asm_additional_options_backup="--cpu=Cortex-M3;--pd;&quot;__MICROLIB SETA 1&quot;"
-      c_additional_options="-D__MICROLIB"
-      c_additional_options_backup="-mcpu=Cortex-M3;-D__MICROLIB;-O0;-g"
-      link_additional_options_backup="--cpu=Cortex-M3;--scatter=&quot;.\Objects\stm32f103_yh.sct&quot;;--library_type=microlib"
-      linker_additional_options="--scatter=&quot;.\Objects\stm32f103_yh.sct&quot;;--library_type=microlib" />
+    <configuration Name="Target 1 Internal" arm_compiler_variant="gcc" />
   </project>
   <configuration
     Name="External Keil ARMCLANG"
     hidden="Yes"
     macros="KEIL_TOOLKIT_DIR=C:/Keil_v5/ARM" />
   <configuration Name="Internal" hidden="Yes" />
-  <configuration
-    Name="Target 1 External"
-    inherited_configurations="External Keil ARMCLANG;Target 1" />
   <configuration
     Name="Target 1 Internal"
     inherited_configurations="Internal;Target 1" />

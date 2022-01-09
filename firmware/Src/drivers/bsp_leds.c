@@ -9,11 +9,11 @@ static void led_timer_toggle(ULONG param)
     while(1)
     {
         bsp_write_do_toggle(DO_LED_RED);
-        sys_delay_ms(100);
+        sys_delay_ms(2000);
         bsp_write_do_toggle(DO_LED_GREEN);
-        sys_delay_ms(100);
+        sys_delay_ms(2000);
         bsp_write_do_toggle(DO_LED_BLUE);
-        sys_delay_ms(100);
+        sys_delay_ms(2000);
     }
 }
 
