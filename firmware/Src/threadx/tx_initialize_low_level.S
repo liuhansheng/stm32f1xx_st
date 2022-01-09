@@ -23,10 +23,12 @@
 @
     .global     _tx_thread_system_stack_ptr
     .global     _tx_initialize_unused_memory
+    .global     __RAM_segment_used_end__
     .global     _tx_timer_interrupt
     .global     __main
     .global     __tx_SVCallHandler
     .global     __tx_PendSVHandler
+    .global     _vectors
     .global     __tx_NMIHandler                     @ NMI
     .global     __tx_BadHandler                     @ HardFault
     .global     __tx_SVCallHandler                  @ SVCall
@@ -34,8 +36,6 @@
     .global     __tx_PendSVHandler                  @ PendSV
     .global     __tx_SysTickHandler                 @ SysTick
     .global     __tx_IntHandler                     @ Int 0
-	.global     __initial_sp
-	.global     __Vectors
 @
 @
 SYSTEM_CLOCK      =   72000000
@@ -48,7 +48,7 @@ SYSTICK_CYCLES    =   ((SYSTEM_CLOCK / 1000) -1)
 @/*                                                                        */
 @/*  FUNCTION                                               RELEASE        */
 @/*                                                                        */
-@/*    _tx_initialize_low_level                          Cortex-M3/AC6     */
+@/*    _tx_initialize_low_level                          Cortex-M3/GNU     */
 @/*                                                           6.1          */
 @/*  AUTHOR                                                                */
 @/*                                                                        */
@@ -82,7 +82,11 @@ SYSTICK_CYCLES    =   ((SYSTEM_CLOCK / 1000) -1)
 @/*                                                                        */
 @/*    DATE              NAME                      DESCRIPTION             */
 @/*                                                                        */
-@/*  09-30-2020     William E. Lamie         Initial Version 6.1           */
+@/*  05-19-2020     William E. Lamie         Initial Version 6.0           */
+@/*  09-30-2020     William E. Lamie         Modified Comment(s), fixed    */
+@/*                                            GNU assembly comment, clean */
+@/*                                            up whitespace, resulting    */
+@/*                                            in version 6.1              */
 @/*                                                                        */
 @/**************************************************************************/
 @VOID   _tx_initialize_low_level(VOID)
@@ -98,20 +102,20 @@ _tx_initialize_low_level:
 @    /* Set base of available memory to end of non-initialised RAM area.  */
 @
     LDR     r0, =_tx_initialize_unused_memory       @ Build address of unused memory pointer
-    LDR     r1, =__initial_sp                       @ Build first free address
+    LDR     r1, =__RAM_segment_used_end__           @ Build first free address
     ADD     r1, r1, #4                              @
     STR     r1, [r0]                                @ Setup first unused memory pointer
 @
 @    /* Setup Vector Table Offset Register.  */
 @
     MOV     r0, #0xE000E000                         @ Build address of NVIC registers
-    LDR     r1, =__Vectors                          @ Pickup address of vector table
+    LDR     r1, =_vectors                           @ Pickup address of vector table
     STR     r1, [r0, #0xD08]                        @ Set vector table address
 @
 @    /* Set system stack pointer from vector value.  */
 @
     LDR     r0, =_tx_thread_system_stack_ptr        @ Build address of system stack pointer
-    LDR     r1, =__Vectors                          @ Pickup address of vector table
+    LDR     r1, =_vectors                           @ Pickup address of vector table
     LDR     r1, [r1]                                @ Pickup reset stack pointer
     STR     r1, [r0]                                @ Save system stack pointer
 @
@@ -142,7 +146,6 @@ _tx_initialize_low_level:
     LDR     r1, =0x40FF0000                         @ SysT, PnSV, Rsrv, DbgM
     STR     r1, [r0, #0xD20]                        @ Setup System Handlers 12-15 Priority Registers
                                                     @ Note: PnSV must be lowest priority, which is 0xFF
-
 @
 @    /* Return to caller.  */
 @

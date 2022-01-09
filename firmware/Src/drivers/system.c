@@ -42,6 +42,7 @@ void SystemClock_Config(void)
 
 void sys_init(void)
 {
+    __enable_irq();
     HAL_Init();
 
     SystemClock_Config();

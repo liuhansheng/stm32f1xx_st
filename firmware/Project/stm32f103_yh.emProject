@@ -303,7 +303,7 @@
     <folder Name="threadx/usr">
       <file file_name="../Src/threadx/tx_user.h" />
       <file file_name="../Libraries/threadx/ports/cortex_m3/ac6/inc/tx_port.h" />
-      <file file_name="../Libraries/threadx/ports/cortex_m3/gnu/example_build/tx_initialize_low_level.S" />
+      <file file_name="../Src/threadx/tx_initialize_low_level.S" />
     </folder>
     <folder Name="drives">
       <file file_name="../Src/drivers/bsp_io_out.c" />

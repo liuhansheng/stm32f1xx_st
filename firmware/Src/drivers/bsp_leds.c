@@ -6,8 +6,15 @@
 static void led_timer_toggle(ULONG param)
 {
     (void)param;
-    bsp_write_do_toggle(DO_LED_GREEN);
-	sys_delay_ms(100);
+    while(1)
+    {
+        bsp_write_do_toggle(DO_LED_RED);
+        sys_delay_ms(100);
+        bsp_write_do_toggle(DO_LED_GREEN);
+        sys_delay_ms(100);
+        bsp_write_do_toggle(DO_LED_BLUE);
+        sys_delay_ms(100);
+    }
 }
 
 
@@ -15,9 +22,6 @@ void leds_init(void)
 {
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];
-    bsp_write_do_toggle(DO_LED_GREEN);
-    bsp_write_do_toggle(DO_LED_RED);
-    bsp_write_do_toggle(DO_LED_BLUE);
 
     tx_thread_create(&_thread,
                      "led_node",
