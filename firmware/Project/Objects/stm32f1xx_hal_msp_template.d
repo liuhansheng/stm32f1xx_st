@@ -5,6 +5,15 @@
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_rcc.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_def.h \
   ..\Libraries\cmsis\Device\ST\STM32F1xx\Include\stm32f1xx.h \
+  ..\Libraries\cmsis\Device\ST\STM32F1xx\Include\stm32f103xe.h \
+  ..\Libraries\cmsis\Include\core_cm3.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  ..\Libraries\cmsis\Include\cmsis_version.h \
+  ..\Libraries\cmsis\Include\cmsis_compiler.h \
+  ..\Libraries\cmsis\Include\cmsis_armclang.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  ..\Libraries\cmsis\Device\ST\STM32F1xx\Include\system_stm32f1xx.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\Legacy\stm32_hal_legacy.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_rcc_ex.h \
@@ -21,9 +30,11 @@
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_adc_ex.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_crc.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_dac.h \
+  ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_dac_ex.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_flash.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_flash_ex.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_sram.h \
+  ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_ll_fsmc.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_nor.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_i2c.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_i2s.h \
@@ -33,6 +44,7 @@
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_rtc_ex.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_pccard.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_sd.h \
+  ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_ll_sdmmc.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_nand.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_spi.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_tim.h \
@@ -44,5 +56,6 @@
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_wwdg.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_pcd.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_ll_usb.h \
+  ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_pcd_ex.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_hcd.h \
   ..\Libraries\stm32f1xx_hal_driver\Inc\stm32f1xx_hal_mmc.h

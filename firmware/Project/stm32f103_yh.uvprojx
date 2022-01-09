@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pCCUsed>6160000::V6.16::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -51,9 +52,9 @@
           <OutputName>stm32f103_yh</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
-          <CreateHexFile>0</CreateHexFile>
+          <CreateHexFile>1</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>1</BrowseInformation>
+          <BrowseInformation>0</BrowseInformation>
           <ListingPath>.\Listings\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -133,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4100</DriverSelection>
           </Flash1>
-          <bUseTDR>1</bUseTDR>
-          <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <bUseTDR>0</bUseTDR>
+          <Flash2>Segger\JL2CM3.dll</Flash2>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -188,7 +189,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -312,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>2</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -321,13 +322,13 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
             <uC99>0</uC99>
             <uGnu>0</uGnu>
             <useXO>0</useXO>
-            <v6Lang>3</v6Lang>
+            <v6Lang>5</v6Lang>
             <v6LangP>3</v6LangP>
             <vShortEn>1</vShortEn>
             <vShortWch>1</vShortWch>
@@ -336,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\stm32f1xx_hal_driver\Inc\Legacy;..\Libraries\stm32f1xx_hal_driver\Inc;..\Libraries\threadx\common\inc;..\Libraries\threadx\ports\cortex_m3\ac6\inc;..\Libraries\cmsis\Include;..\Libraries\cmsis\Device\ST\STM32F1xx\Include;..\Src\boot;..\Src\common;..\Src\drivers</IncludePath>
+              <IncludePath>..\Libraries\stm32f1xx_hal_driver\Inc\Legacy;..\Libraries\stm32f1xx_hal_driver\Inc;..\Libraries\threadx\common\inc;..\Libraries\threadx\ports\cortex_m3\ac6\inc;..\Libraries\cmsis\Include;..\Libraries\cmsis\Device\ST\STM32F1xx\Include;..\Src\boot;..\Src\common;..\Src\drivers;..\Src\threadx</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -360,7 +361,7 @@
             </VariousControls>
           </Aads>
           <LDads>
-            <umfTarg>1</umfTarg>
+            <umfTarg>0</umfTarg>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
             <noStLib>0</noStLib>
@@ -369,7 +370,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>.\Objects\stm32f103_yh.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -493,11 +494,6 @@
               <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_mmc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f1xx_hal_msp_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_msp_template.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f1xx_hal_nand.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_nand.c</FilePath>
@@ -578,16 +574,6 @@
               <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_tim_ex.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f1xx_hal_timebase_rtc_alarm_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_timebase_rtc_alarm_template.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f1xx_hal_timebase_tim_template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_timebase_tim_template.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f1xx_hal_uart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Libraries\stm32f1xx_hal_driver\Src\stm32f1xx_hal_uart.c</FilePath>
@@ -605,16 +591,8 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>cmsis</GroupName>
-        </Group>
-        <Group>
           <GroupName>threadx/port</GroupName>
           <Files>
-            <File>
-              <FileName>tx_initialize_low_level.S</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\Libraries\threadx\ports\cortex_m3\ac6\example_build\sample_threadx\tx_initialize_low_level.S</FilePath>
-            </File>
             <File>
               <FileName>tx_thread_context_restore.S</FileName>
               <FileType>2</FileType>
@@ -663,7 +641,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>thread/source</GroupName>
+          <GroupName>threadx/source</GroupName>
           <Files>
             <File>
               <FileName>tx_block_allocate.c</FileName>
@@ -1593,6 +1571,26 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>threadx/usr</GroupName>
+          <Files>
+            <File>
+              <FileName>tx_user.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Src\threadx\tx_user.h</FilePath>
+            </File>
+            <File>
+              <FileName>tx_port.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Libraries\threadx\ports\cortex_m3\ac6\inc\tx_port.h</FilePath>
+            </File>
+            <File>
+              <FileName>tx_initialize_low_level.S</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Src\threadx\tx_initialize_low_level.S</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>drives</GroupName>
           <Files>
             <File>
@@ -1601,14 +1599,14 @@
               <FilePath>..\Src\drivers\bsp_io_out.c</FilePath>
             </File>
             <File>
-              <FileName>bsp_led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Src\drivers\bsp_led.c</FilePath>
-            </File>
-            <File>
               <FileName>system.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\drivers\system.c</FilePath>
+            </File>
+            <File>
+              <FileName>bsp_leds.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\drivers\bsp_leds.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -1629,11 +1627,6 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\boot\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>startup_stm32f103xe.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>..\Src\boot\startup_stm32f103xe.s</FilePath>
             </File>
             <File>
               <FileName>stm32f1xx_hal_conf.h</FileName>
@@ -1659,6 +1652,11 @@
               <FileName>task.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Src\boot\task.c</FilePath>
+            </File>
+            <File>
+              <FileName>startup_stm32f103xe.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\Libraries\cmsis\Device\ST\STM32F1xx\Source\Templates\arm\startup_stm32f103xe.s</FilePath>
             </File>
           </Files>
         </Group>
