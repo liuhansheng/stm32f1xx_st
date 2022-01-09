@@ -1,0 +1,8 @@
+[submodule "firmware\Libraries\threadx"]
+	path = firmware/Libraries/threadx
+	url = git@codeup.aliyun.com:hx_tech/Library/threadx.git
+	branch = master
+
+[submodule "firmware/Libraries/lwrb"]
+	path = firmware/Libraries/lwrb
+	url = git@github.com:MaJerle/lwrb.git
