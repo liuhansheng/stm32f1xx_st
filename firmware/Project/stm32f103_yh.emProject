@@ -340,8 +340,8 @@
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />
-        <file file_name="../Libraries/threadx/ports/cortex_m3/ac6/inc/tx_port.h" />
         <file file_name="../Src/threadx/tx_initialize_low_level.S" />
+        <file file_name="../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h" />
       </folder>
       <folder Name="modules">
         <file file_name="../Src/modules/test.c" />
