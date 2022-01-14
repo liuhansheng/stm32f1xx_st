@@ -10,6 +10,6 @@ typedef enum
 } do_map_enum;
 
 void              bsp_io_out_init(void);
-void bsp_write_do(uint8_t index, uint8_t state);
+void              bsp_write_do(uint8_t index, uint8_t state);
 void              bsp_write_do_toggle(uint8_t index);
 int               bsp_read_do(uint8_t index);
