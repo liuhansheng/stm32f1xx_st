@@ -1,3 +1,6 @@
 [submodule "firmware/Libraries/lwrb"]
 	path = firmware/Libraries/lwrb
 	url = git@github.com:MaJerle/lwrb.git
+[submodule "firmware/Libraries/threadx"]
+	path = firmware/Libraries/threadx
+	url = git@github.com:azure-rtos/threadx.git
