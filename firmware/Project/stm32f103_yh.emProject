@@ -337,6 +337,7 @@
         <file file_name="../Src/drivers/bsp_leds.c" />
         <file file_name="../Src/drivers/bsp_uart2.c" />
         <file file_name="../Src/drivers/bsp_uarts.c" />
+        <file file_name="../Src/drivers/bsp_adc.c" />
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />
