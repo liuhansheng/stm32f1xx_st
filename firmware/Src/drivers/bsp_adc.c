@@ -31,10 +31,7 @@ static uint16_t adc1_dma_buff_data[4 * EXT_ADC_CHANNEL_VALUE_SIZE];
         {0},adc,channel,ARRAY_LEN(channel),ARRAY_LEN(channel) *EXT_ADC_CHANNEL_VALUE_SIZE,dma_buff,     \
     }
 static bsp_adc_channel_t bsp_adc_channel_map[] = {
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_0,0),
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_1,1),
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_2,2),
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_3,3),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_1,0),
 };
 static bsp_adc_t bsp_adc_map[] = {
     ADC_CFG(ADC1,bsp_adc_channel_map,adc1_dma_buff_data)
@@ -60,7 +57,7 @@ static void bsp_adc_channel_init(bsp_adc_t *adc)
     {
         sConfig.Channel      = adc->channel[i].adc_channel;
         sConfig.Rank         = i + 1;
-        sConfig.SamplingTime = ADC_SAMPLETIME_13CYCLES_5;
+        sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
 
         if (HAL_ADC_ConfigChannel(&adc->hadc, &sConfig) != HAL_OK)
         {
@@ -71,22 +68,31 @@ static void bsp_adc_channel_init(bsp_adc_t *adc)
 
 static void bsp_adc_init(bsp_adc_t *adc)
 {
-    __HAL_RCC_ADC_CLK_ENABLE(); 
+    __HAL_RCC_ADC1_CLK_ENABLE(); 
+    // adc->hadc.Instance = ADC1;
+    // adc->hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV8;
+    // adc->hadc.Init.Resolution = ADC_RESOLUTION_12B;
+    // adc->hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    // adc->hadc.Init.ScanConvMode = ADC_SCAN_ENABLE;
+    // adc->hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+    // adc->hadc.Init.LowPowerAutoWait = ENABLE;
+    // adc->hadc.Init.ContinuousConvMode = ENABLE;
+    // adc->hadc.Init.NbrOfConversion = 5;
+    // adc->hadc.Init.DiscontinuousConvMode = DISABLE;
+    // adc->hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
+    // adc->hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
+    // adc->hadc.Init.DMAContinuousRequests = ENABLE;
+    // adc->hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
+    // adc->hadc.Init.OversamplingMode = ENABLE;
+
     adc->hadc.Instance = ADC1;
-    adc->hadc.Init.ClockPrescaler = ADC_CLOCK_ASYNC_DIV8;
-    adc->hadc.Init.Resolution = ADC_RESOLUTION_12B;
-    adc->hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
     adc->hadc.Init.ScanConvMode = ADC_SCAN_ENABLE;
-    adc->hadc.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
-    adc->hadc.Init.LowPowerAutoWait = ENABLE;
     adc->hadc.Init.ContinuousConvMode = ENABLE;
-    adc->hadc.Init.NbrOfConversion = 5;
     adc->hadc.Init.DiscontinuousConvMode = DISABLE;
     adc->hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
-    adc->hadc.Init.ExternalTrigConvEdge = ADC_EXTERNALTRIGCONVEDGE_NONE;
-    adc->hadc.Init.DMAContinuousRequests = ENABLE;
-    adc->hadc.Init.Overrun = ADC_OVR_DATA_PRESERVED;
-    adc->hadc.Init.OversamplingMode = ENABLE;
+    adc->hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
+    adc->hadc.Init.NbrOfConversion = 1;
+    adc->hadc.Init.NbrOfDiscConversion = 0; 
     if (HAL_ADC_Init(&(adc->hadc)) != HAL_OK)
     {
         Error_Handler();
@@ -96,10 +102,19 @@ static void bsp_adc_dma_init(bsp_adc_t *adc)
 {
     if(adc->adc == ADC1)
     {
-        __HAL_RCC_DMA2_CLK_ENABLE(); 
+        __HAL_RCC_DMA1_CLK_ENABLE(); 
         static DMA_HandleTypeDef hdma_adc1;
-        hdma_adc1.Instance = DMA2_Channel3;
-        hdma_adc1.Init.Request = DMA_REQUEST_0;
+        // hdma_adc1.Instance = DMA2_Channel3;
+        // hdma_adc1.Init.Request = DMA_REQUEST_0;
+        // hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
+        // hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
+        // hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
+        // hdma_adc1.Init.PeriphDataAlignment = DMA_PDATAALIGN_HALFWORD;
+        // hdma_adc1.Init.MemDataAlignment = DMA_MDATAALIGN_HALFWORD;
+        // hdma_adc1.Init.Mode = DMA_CIRCULAR;
+        // hdma_adc1.Init.Priority = DMA_PRIORITY_LOW;
+
+        hdma_adc1.Instance = DMA1_Channel1;
         hdma_adc1.Init.Direction = DMA_PERIPH_TO_MEMORY;
         hdma_adc1.Init.PeriphInc = DMA_PINC_DISABLE;
         hdma_adc1.Init.MemInc = DMA_MINC_ENABLE;
@@ -164,12 +179,12 @@ uint8_t bsp_get_adc_volt(uint8_t channel,float *value)
 
 void bsp_task_adc_init(void)
 {
-  for(uint8_t i = 0; i < ARRAY_LEN(bsp_adc_map); i ++)
-  {
-      bsp_adc_io_init(&bsp_adc_map[i]);
-      bsp_adc_init(&bsp_adc_map[i]);
-      bsp_adc_dma_init(&bsp_adc_map[i]);
-      bsp_adc_channel_init(&bsp_adc_map[i]);
-      HAL_ADC_Start_DMA(&bsp_adc_map[i].hadc, (uint32_t *)bsp_adc_map[i].dma_buff, bsp_adc_map[i].dma_value_size);
-  }
+    for(uint8_t i = 0; i < ARRAY_LEN(bsp_adc_map); i ++)
+    {
+        bsp_adc_io_init(&bsp_adc_map[i]);
+        bsp_adc_init(&bsp_adc_map[i]);
+        bsp_adc_dma_init(&bsp_adc_map[i]);
+        bsp_adc_channel_init(&bsp_adc_map[i]);
+        HAL_ADC_Start_DMA(&bsp_adc_map[i].hadc, (uint32_t *)bsp_adc_map[i].dma_buff, bsp_adc_map[i].dma_value_size);
+    }
 }

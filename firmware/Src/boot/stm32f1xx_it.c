@@ -20,6 +20,9 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_it.h"
+#include "bsp_uart2.h"
+#include "bsp_uarts.h"
+#include "bsp_uart1.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -200,5 +203,72 @@ void DebugMon_Handler(void)
 
 /* USER CODE BEGIN 1 */
 
+
+/******************************************************************************/
+/******************************************************************************/
+void USART2_IRQHandler(void)
+{
+    /** Interrupt handling. */
+    HAL_UART_IRQHandler(&huart2);
+
+    if (__HAL_UART_GET_FLAG(&huart2, UART_FLAG_IDLE) != RESET)
+    {
+        /** Clear idle line interrupt flag. */
+        __HAL_UART_CLEAR_IDLEFLAG(&huart2);
+
+        /** 闲时函数回调 */
+        bsp_uart2_rx_idle_cb();
+    }
+}
+/**
+  * @brief This function handles DMA1 channel6 global interrupt.
+  */
+void DMA1_Channel6_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(huart2.hdmarx);
+}
+
+/**
+  * @brief This function handles DMA1 channel7 global interrupt.
+  */
+void DMA1_Channel7_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(huart2.hdmatx);
+}
 /* USER CODE END 1 */
+/******************************************************************************/
+/******************************************************************************/
+void USART1_IRQHandler(void)
+{
+    /** Interrupt handling. */
+    HAL_UART_IRQHandler(&huart1);
+
+    if (__HAL_UART_GET_FLAG(&huart1, UART_FLAG_IDLE) != RESET)
+    {
+        /** Clear idle line interrupt flag. */
+        __HAL_UART_CLEAR_IDLEFLAG(&huart1);
+
+        /** 闲时函数回调 */
+        bsp_uart1_rx_idle_cb();
+    }
+}
+
+/**
+  * @brief This function handles DMA1 channel6 global interrupt.
+  */
+void DMA1_Channel5_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(huart1.hdmarx);
+}
+
+/**
+  * @brief This function handles DMA1 channel7 global interrupt.
+  */
+void DMA1_Channel4_IRQHandler(void)
+{
+  HAL_DMA_IRQHandler(huart1.hdmatx);
+}
+/* USER CODE END 1 */
+/******************************************************************************/
+/******************************************************************************/
 

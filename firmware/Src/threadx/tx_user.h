@@ -111,8 +111,8 @@
 */
 #define TX_MAX_PRIORITIES          32 /** 定义ThreadX的优先级. 合法值的范围是32到1024(含), 并且必须能被32整除 */
 #define TX_MINIMUM_STACK           200  /** 定义最小堆栈大小(以字节为单位). 创建线程时, 用于错误检查. */
-#define TX_TIMER_THREAD_STACK_SIZE 2048 /** 定义内部 ThreadX 系统计时器线程的堆栈大小 (以字节为单位) */
-#define TX_TIMER_THREAD_PRIORITY   15   /** 定义内部 ThreadX 系统计时器线程的优先级. */
+//#define TX_TIMER_THREAD_STACK_SIZE 2048 /** 定义内部 ThreadX 系统计时器线程的堆栈大小 (以字节为单位) */
+//#define TX_TIMER_THREAD_PRIORITY   15   /** 定义内部 ThreadX 系统计时器线程的优先级. */
 
 /* Define the common timer tick reference for use by other middleware components. The default
    value is 10ms (i.e. 100 ticks, defined in tx_api.h), but may be replaced by a port-specific

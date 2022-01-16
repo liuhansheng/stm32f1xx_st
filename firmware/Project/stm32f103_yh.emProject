@@ -64,7 +64,10 @@
       build_intermediate_directory="./Objects"
       build_output_directory="./Objects"
       build_output_file_name="./Objects/stm32f103_yh.axf" />
-    <configuration Name="Target 1 Internal" arm_compiler_variant="gcc" />
+    <configuration
+      Name="Target 1 Internal"
+      arm_compiler_variant="gcc"
+      debug_register_definition_file="E:/1_HX_DOC/gitproject/stm32f1xx_st/firmware/Libraries/startup/STM32F103xx_Registers.xml" />
     <folder Name="Libraries">
       <folder Name="stm32f1xx_hal">
         <file file_name="../Libraries/stm32f1xx_hal_driver/Src/stm32f1xx_hal.c" />
@@ -338,6 +341,7 @@
         <file file_name="../Src/drivers/bsp_uart2.c" />
         <file file_name="../Src/drivers/bsp_uarts.c" />
         <file file_name="../Src/drivers/bsp_adc.c" />
+        <file file_name="../Src/drivers/bsp_uart1.c" />
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />

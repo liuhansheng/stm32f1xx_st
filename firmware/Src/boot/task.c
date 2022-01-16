@@ -1,6 +1,7 @@
 #include "tx_api.h"
 #include "bsp_leds.h"
 #include "bsp_io_out.h"
+#include "bsp_adc.h"
 #include "test.h"
 
 static void rtos_stack_error_handler(TX_THREAD *thread_ptr)
@@ -29,7 +30,10 @@ void tx_application_define(void *first_unused_memory)
     /** 初始化 LED 输出 */
     leds_init();
 
-    /** uart test*/
+    /** ADC 初始化 */
+    // bsp_task_adc_init();
+
+    /** uart test */
     test_init();
 
 }
