@@ -24,15 +24,19 @@ typedef struct
     uint16_t    *       dma_buff;
 }bsp_adc_t;
 
-static uint16_t adc1_dma_buff_data[4 * EXT_ADC_CHANNEL_VALUE_SIZE];
+static uint16_t adc1_dma_buff_data[6 * EXT_ADC_CHANNEL_VALUE_SIZE];
 
 #define ADC_CFG(adc,channel,dma_buff)                                                                   \
     {                                                                                                   \
         {0},adc,channel,ARRAY_LEN(channel),ARRAY_LEN(channel) *EXT_ADC_CHANNEL_VALUE_SIZE,dma_buff,     \
     }
 static bsp_adc_channel_t bsp_adc_channel_map[] = {
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_1,0),
-    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_2,0),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_0,10),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_1,11),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_2,12),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_3,13),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_4,14),
+    ADC_CHANNEL_CFG(GPIOC,GPIO_PIN_5,15),
 };
 static bsp_adc_t bsp_adc_map[] = {
     ADC_CFG(ADC1,bsp_adc_channel_map,adc1_dma_buff_data)
@@ -75,7 +79,7 @@ static void bsp_adc_init(bsp_adc_t *adc)
     adc->hadc.Init.DiscontinuousConvMode = DISABLE;
     adc->hadc.Init.ExternalTrigConv = ADC_SOFTWARE_START;
     adc->hadc.Init.DataAlign = ADC_DATAALIGN_RIGHT;
-    adc->hadc.Init.NbrOfConversion = 2;
+    adc->hadc.Init.NbrOfConversion = 6;
     adc->hadc.Init.NbrOfDiscConversion = 0; 
     if (HAL_ADC_Init(&(adc->hadc)) != HAL_OK)
     {
@@ -101,7 +105,6 @@ static void bsp_adc_dma_init(bsp_adc_t *adc)
 
         /* Associate the initialized DMA handle to the the UART handle */
         __HAL_LINKDMA(&adc->hadc, DMA_Handle, hdma_adc1);
-
     }
 }
 uint16_t average_filter(volatile uint16_t *arr, uint16_t len)
@@ -145,6 +148,7 @@ uint8_t bsp_get_adc_volt(uint8_t channel,float *value)
         {
             bsp_adc_get_result(&bsp_adc_map[i], index);
             *value = bsp_adc_map[i].channel[index].volt;
+            printf(" value %d %f\n",a,b);
             return 0;
         }
         index -= bsp_adc_map[i].channel_num;
@@ -154,7 +158,6 @@ uint8_t bsp_get_adc_volt(uint8_t channel,float *value)
 
 void bsp_task_adc_init(void)
 {
-    __HAL_RCC_ADC_CONFIG(RCC_ADCPCLK2_DIV6);
     __HAL_RCC_ADC1_CLK_ENABLE();
     for(uint8_t i = 0; i < ARRAY_LEN(bsp_adc_map); i ++)
     {
@@ -162,6 +165,7 @@ void bsp_task_adc_init(void)
         bsp_adc_init(&bsp_adc_map[i]);
         bsp_adc_dma_init(&bsp_adc_map[i]);
         bsp_adc_channel_init(&bsp_adc_map[i]);
+        HAL_ADCEx_Calibration_Start(&bsp_adc_map[i].hadc);
         HAL_ADC_Start_DMA(&bsp_adc_map[i].hadc, (uint32_t *)bsp_adc_map[i].dma_buff, bsp_adc_map[i].dma_value_size);
     }
 }

@@ -23,6 +23,7 @@
 #include "bsp_uart2.h"
 #include "bsp_uarts.h"
 #include "bsp_uart1.h"
+#include "bsp_adc.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -271,4 +272,3 @@ void DMA1_Channel4_IRQHandler(void)
 /* USER CODE END 1 */
 /******************************************************************************/
 /******************************************************************************/
-

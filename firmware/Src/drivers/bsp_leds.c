@@ -8,12 +8,17 @@ static void led_timer_toggle(ULONG param)
     (void)param;
     while(1)
     {
-        bsp_write_do_toggle(DO_LED_RED);
-        sys_delay_ms(2000);
-        bsp_write_do_toggle(DO_LED_GREEN);
-        sys_delay_ms(2000);
-        bsp_write_do_toggle(DO_LED_BLUE);
-        sys_delay_ms(2000);
+        // bsp_write_do_toggle(DO_LED_RED);
+        // sys_delay_ms(2000);
+        // bsp_write_do_toggle(DO_LED_GREEN);
+        // sys_delay_ms(2000);
+        // bsp_write_do_toggle(DO_LED_BLUE);
+        // sys_delay_ms(2000);
+        bsp_write_do(DO_LED_RED, 1);
+        bsp_write_do(DO_LED_GREEN, 1);
+        bsp_write_do(DO_LED_BLUE, 1);
+        sys_delay_ms(10000);
+
     }
 }
 
