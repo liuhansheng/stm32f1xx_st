@@ -188,8 +188,8 @@ void bsp_uart1_init(uint32_t baudrate)
                      0,
                      &_thread_stack[0],
                      sizeof(_thread_stack),
-                     TX_THREAD_PRIORITY_UART2_RX,
-                     TX_THREAD_PRIORITY_UART2_RX,
+                     TX_THREAD_PRIORITY_UART1_RX,
+                     TX_THREAD_PRIORITY_UART1_RX,
                      100,
                      TX_AUTO_START);
 }

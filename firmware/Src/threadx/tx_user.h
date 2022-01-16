@@ -320,8 +320,8 @@
 /*************************************** 此处统一管理所有线程的优先级 **************************************/
 /*************************************** 此处统一管理所有线程的优先级 **************************************/
 
-#define TX_THREAD_PRIORITY_UART1_RX     5
-#define TX_THREAD_PRIORITY_UART1_TX     6
+#define TX_THREAD_PRIORITY_UART1_RX     9
+#define TX_THREAD_PRIORITY_UART1_TX     9
 #define TX_THREAD_PRIORITY_UART2_RX     10
 #define TX_THREAD_PRIORITY_UART3_RX     10
 #define TX_THREAD_PRIORITY_UART4_RX     10

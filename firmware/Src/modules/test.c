@@ -46,8 +46,8 @@ void test_init(void)
                      0,
                      &_thread_stack[0],
                      sizeof(_thread_stack),
-                     TX_THREAD_PRIORITY_UART2_RX,
-                     TX_THREAD_PRIORITY_UART2_RX,
+                     TX_THREAD_PRIORITY_TEST,
+                     TX_THREAD_PRIORITY_TEST,
                      TX_NO_TIME_SLICE,
                      TX_AUTO_START);
 }

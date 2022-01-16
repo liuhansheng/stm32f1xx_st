@@ -23,7 +23,7 @@ void HAL_MspInit(void)
   __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
-  
+
   __HAL_RCC_DMA1_CLK_ENABLE();
   /* USER CODE END MspInit 1 */
 }
@@ -234,29 +234,17 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   if(huart->Instance==USART1)
   {
-  /* USER CODE BEGIN USART1_MspInit 0 */
-
-  /* USER CODE END USART1_MspInit 0 */
-    /* Peripheral clock enable */
     __HAL_RCC_USART1_CLK_ENABLE();
-
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    /**USART1 GPIO Configuration
-    PA9     ------> USART1_TX
-    PA10     ------> USART1_RX
-    */
-    GPIO_InitStruct.Pin = GPIO_PIN_9;
+    GPIO_InitStruct.Pin = GPIO_PIN_10 | GPIO_PIN_9;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+    GPIO_InitStruct.Pull = GPIO_PULLUP;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+    
+    HAL_NVIC_SetPriority(USART1_IRQn, 0, 0);
+    HAL_NVIC_EnableIRQ(USART1_IRQn);
 
-    GPIO_InitStruct.Pin = GPIO_PIN_10;
-    GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-    GPIO_InitStruct.Pull = GPIO_NOPULL;
-    HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-    /* USART1 DMA Init */
-    /* USART1_RX Init */
     static DMA_HandleTypeDef hdma_usart1_rx;
     hdma_usart1_rx.Instance = DMA1_Channel5;
     hdma_usart1_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;
@@ -275,7 +263,6 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     HAL_NVIC_SetPriority(DMA1_Channel5_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(DMA1_Channel5_IRQn);
 
-    /* USART1_TX Init */
     static DMA_HandleTypeDef hdma_usart1_tx;
     hdma_usart1_tx.Instance = DMA1_Channel4;
     hdma_usart1_tx.Init.Direction = DMA_MEMORY_TO_PERIPH;
@@ -291,11 +278,8 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
     }
 
     __HAL_LINKDMA(huart,hdmatx,hdma_usart1_tx);
-    HAL_NVIC_SetPriority(DMA1_Channel4_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(DMA1_Channel4_IRQn, 1, 0);
     HAL_NVIC_EnableIRQ(DMA1_Channel4_IRQn);
-  /* USER CODE BEGIN USART1_MspInit 1 */
-
-  /* USER CODE END USART1_MspInit 1 */
   }
   else if(huart->Instance==USART2)
   {
@@ -310,8 +294,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* huart)
 
     HAL_NVIC_SetPriority(USART2_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(USART2_IRQn);
-    /* USART2 DMA Init */
-    /* USART2_RX Init */
+
     static DMA_HandleTypeDef hdma_usart2_rx;
     hdma_usart2_rx.Instance = DMA1_Channel6;
     hdma_usart2_rx.Init.Direction = DMA_PERIPH_TO_MEMORY;

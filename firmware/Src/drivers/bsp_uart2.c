@@ -126,8 +126,6 @@ size_t bsp_uart2_send(uint8_t *data, uint16_t len)
 
 static void uart2_config(uint32_t baudrate)
 {
-    __HAL_RCC_USART2_CLK_ENABLE();
-    __HAL_RCC_GPIOA_CLK_ENABLE();
     huart2.Instance          = USART2;
     huart2.Init.BaudRate     = baudrate;
     huart2.Init.WordLength   = UART_WORDLENGTH_8B;
