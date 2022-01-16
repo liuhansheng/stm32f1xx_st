@@ -37,6 +37,7 @@ extern "C" {
 #define HAL_MODULE_ENABLED
 #define HAL_ADC_MODULE_ENABLED
 #define HAL_CAN_MODULE_ENABLED
+#define HAL_ADC_EX_MODULE_ENABLED
 /* #define HAL_CAN_LEGACY_MODULE_ENABLED */
 #define HAL_CEC_MODULE_ENABLED
 #define HAL_CORTEX_MODULE_ENABLED
@@ -277,6 +278,10 @@ extern "C" {
 
 #ifdef HAL_ADC_MODULE_ENABLED
 #include "stm32f1xx_hal_adc.h"
+#endif /* HAL_ADC_MODULE_ENABLED */
+
+#ifdef HAL_ADC_EX_MODULE_ENABLED
+#include "stm32f1xx_hal_adc_ex.h"
 #endif /* HAL_ADC_MODULE_ENABLED */
 
 #ifdef HAL_CRC_MODULE_ENABLED

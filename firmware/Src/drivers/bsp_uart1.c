@@ -1,5 +1,4 @@
 #include "bsp_uart1.h"
-
 UART_HandleTypeDef huart1;
 
 /** 指向信号量的指针 */
@@ -218,4 +217,25 @@ void bsp_uart1_dma_rx_cplt_cb(void)
 void bsp_uart1_rx_idle_cb(void)
 {
     tx_semaphore_put(&uart1_rx_sem);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#pragma import(__use_no_semihosting)                     
+struct __FILE
+{
+	int handle;
+ 
+};
+//FILE __stdout;
+//定义_sys_exit()以避免使用半主机模式    
+_sys_exit(int x)
+{
+	x = x;
+}
+int fputc(int ch, FILE *f)   //B
+{      
+ while((USART1->SR&0X40)==0);//等待上一次串口数据发送完成  
+ USART1->DR = (uint8_t) ch;       //写DR,串口1将发送数据
+ return ch;
 }

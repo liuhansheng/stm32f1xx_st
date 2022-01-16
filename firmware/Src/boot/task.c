@@ -30,10 +30,7 @@ void tx_application_define(void *first_unused_memory)
     /** 初始化 LED 输出 */
     leds_init();
 
-    /** ADC 初始化 */
-    // bsp_task_adc_init();
 
-    /** uart test */
     test_init();
 
 }
