@@ -33,7 +33,6 @@ typedef enum
 #define ADC_FULL 4095
 #define EXT_ADC_CHANNEL_VALUE_SIZE (30)                       // 每个通道采集的次数
 #define ADC_VOLT_RANG          3.3                            // ADC电压量程
-#define ADC_GAIN            3.0                            // 校准电压 
 
 void bsp_task_adc_init(void);
 uint8_t bsp_get_adc_volt(uint8_t channel,float *value);
