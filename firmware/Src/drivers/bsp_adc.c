@@ -137,7 +137,7 @@ void bsp_adc_get_result(bsp_adc_t* adc,uint16_t channel)
         adc->channel[index].value[j] = adc->dma_buff[j * adc->channel_num + index];
     }
     adc->channel[index].result = bubbleSort(adc->channel[index].value,EXT_ADC_CHANNEL_VALUE_SIZE);
-    adc->channel[index].volt = ADC_VOLT_RANG *(adc->channel[index].result / ADC_FULL);
+    adc->channel[index].volt = ADC_VOLT_RANG *((float)adc->channel[index].result / ADC_FULL);
 }
 uint8_t bsp_get_adc_volt(uint8_t channel,float *value)
 {

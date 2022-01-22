@@ -31,7 +31,7 @@ void test_node_loop(void)
         bsp_get_adc_volt(4,&adc_value[4]);
         bsp_get_adc_volt(5,&adc_value[5]);
         printf("adc value %f %f %f %f %f %f \n",adc_value[0],adc_value[1],adc_value[2],
-                                adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
+                               adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
         sys_delay_ms(100);
     }
 
