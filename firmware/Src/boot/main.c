@@ -9,3 +9,4 @@ int main(void)
     /** 进入 RTOS 调度 */
     tx_kernel_enter();
 }
+
