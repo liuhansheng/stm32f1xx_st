@@ -253,5 +253,5 @@
 "Output/stm32f103_yh Target 1 Internal/Obj/bsp_uart1.o"
 "Output/stm32f103_yh Target 1 Internal/Obj/tx_initialize_low_level.o"
 "Output/stm32f103_yh Target 1 Internal/Obj/test.o"
-"C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.68/segger-rtl/libs/libc_v7m_t_le_eabi_balanced.a"
-"C:/Program Files/SEGGER/SEGGER Embedded Studio for ARM 5.68/lib/SEGGER_crtinit_v7m_little.o"
+"D:/app/install/segger-rtl/libs/libc_v7m_t_le_eabi_balanced.a"
+"D:/app/install/lib/SEGGER_crtinit_v7m_little.o"
