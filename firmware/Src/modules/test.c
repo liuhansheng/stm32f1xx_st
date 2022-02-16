@@ -4,6 +4,7 @@
 #include "bsp_uart1.h"
 #include "system.h"
 #include "bsp_adc.h"
+#include "bsp_incapture.h"
 static float adc_value[6];
 static uint8_t data_uart2;
 static uint8_t data_uart1;
@@ -30,8 +31,8 @@ void test_node_loop(void)
         bsp_get_adc_volt(3,&adc_value[3]);
         bsp_get_adc_volt(4,&adc_value[4]);
         bsp_get_adc_volt(5,&adc_value[5]);
-        printf("adc value %f %f %f %f %f %f \n",adc_value[0],adc_value[1],adc_value[2],
-                               adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
+        //printf("adc value %f %f %f %f %f %f \n",adc_value[0],adc_value[1],adc_value[2],
+        //                       adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
         sys_delay_ms(100);
     }
 
@@ -43,6 +44,7 @@ void test_init(void)
     bsp_uart1_init(115200);
     bsp_uart1_install_rx_callback(uart1_read_data);
     bsp_task_adc_init();
+    bsp_di_incapture_init();
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];
 

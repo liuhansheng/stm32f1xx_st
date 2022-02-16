@@ -343,6 +343,10 @@
         <file file_name="../Src/drivers/bsp_uarts.c" />
         <file file_name="../Src/drivers/bsp_adc.c" />
         <file file_name="../Src/drivers/bsp_uart1.c" />
+        <file file_name="../Src/drivers/bsp_can1.c" />
+        <file file_name="../Src/drivers/bsp_i2c1.c" />
+        <file file_name="../Src/drivers/bsp_incapture.c" />
+        <file file_name="../Src/drivers/bsp_spi.c" />
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />
