@@ -55,6 +55,6 @@ Output/Debug/Obj/stm32f103_yh/test.o: \
  ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
  D:/app/install/include/stdlib.h ../Src/boot/main.h \
  ../Src/drivers/bsp_uart2.h ../Src/drivers/bsp_uarts.h \
- ../Libraries/lwrb/lwrb/src/include/lwrb/lwrb.h ../Src/boot/main.h \
+ ../Libraries/lwrb/lwrb/src/include/lwrb/lwrb.h \
  ../Src/drivers/bsp_uart1.h ../Src/drivers/system.h \
  ../Src/drivers/bsp_adc.h ../Src/drivers/bsp_incapture.h

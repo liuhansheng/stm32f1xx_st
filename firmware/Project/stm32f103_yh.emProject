@@ -11,13 +11,15 @@
       arm_simulator_memory_simulation_parameter="RX 08000000,00080000,FFFFFFFF;RWX 20000000,00010000,CDCDCDCD"
       arm_target_device_name="STM32F103ZE"
       arm_target_interface_type="SWD"
-      c_preprocessor_definitions="STM32F103xE;USE_FULL_LL_DRIVER;TX_ENABLE_FPU_SUPPORT;TX_INCLUDE_USER_DEFINE_FILE;FX_INCLUDE_USER_DEFINE_FILE;TX_EXECUTION_PROFILE_ENABLE;USING_SEGGER_RTT_DEBUG"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32F103xE"
       c_user_include_directories="../Libraries/stm32f1xx_hal_driver/Inc/Legacy;../Libraries/stm32f1xx_hal_driver/Inc;../Libraries/threadx/common/inc;../Libraries/threadx/ports/cortex_m3/gnu/inc;../Libraries/cmsis/Include;../Libraries/cmsis/Device/ST/STM32F1xx/Include;../Src/boot;../Src/common;../Src/drivers;../Src/threadx;../Libraries/lwrb/lwrb/src/include;../Src/modules;../Libraries/FlashDB/inc;../Libraries/FlashDB/port/fal/inc;../Libraries/FlashDB/inc;../Src/flashdb/fal"
       debug_register_definition_file="D:/1995work/studyMCU/stm32f1xx_st/firmware/Libraries/startup/STM32F103xx_Registers.xml"
       debug_start_from_entry_point_symbol="No"
       debug_target_connection="J-Link"
       link_linker_script_file="D:/1995work/studyMCU/stm32f1xx_st/firmware/Libraries/startup/STM32F1xx_Flash.icf"
       linker_memory_map_file="D:/1995work/studyMCU/stm32f1xx_st/firmware/Libraries/startup/STM32F103ZE_MemoryMap.xml"
+      linker_printf_fp_enabled="Float"
+      linker_printf_width_precision_supported="No"
       linker_section_placements_segments=""
       project_directory=""
       project_type="Executable" />
@@ -43,6 +45,7 @@
       debug_register_definition_file=""
       link_linker_script_file="D:/1995work/studyMCU/stm32f1xx_st/firmware/Libraries/startup/STM32F1xx_Flash.icf"
       linker_memory_map_file="D:/1995work/studyMCU/stm32f1xx_st/firmware/Libraries/startup/STM32F103ZE_MemoryMap.xml"
+      linker_printf_width_precision_supported="No"
       linker_section_placements_segments="" />
     <folder Name="Libraries">
       <folder Name="stm32f1xx_hal">

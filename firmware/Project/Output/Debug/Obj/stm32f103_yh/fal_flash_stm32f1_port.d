@@ -11,8 +11,6 @@ Output/Debug/Obj/stm32f103_yh/fal_flash_stm32f1_port.o: \
  ../Libraries/cmsis/Include/cmsis_compiler.h \
  ../Libraries/cmsis/Include/cmsis_gcc.h \
  ../Libraries/cmsis/Device/ST/STM32F1xx/Include/system_stm32f1xx.h \
- ../Src/boot/board.h D:/app/install/include/stdbool.h \
- ../Src/threadx/tx_user.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal.h \
  ../Src/boot/stm32f1xx_hal_conf.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_rcc.h \
@@ -53,6 +51,7 @@ Output/Debug/Obj/stm32f103_yh/fal_flash_stm32f1_port.o: \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_wwdg.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_hcd.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_ll_usb.h \
- ../Libraries/threadx/common/inc/tx_api.h \
+ ../Src/boot/board.h D:/app/install/include/stdbool.h \
+ ../Src/threadx/tx_user.h ../Libraries/threadx/common/inc/tx_api.h \
  ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
  D:/app/install/include/stdlib.h ../Src/boot/main.h

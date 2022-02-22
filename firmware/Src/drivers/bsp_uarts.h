@@ -7,7 +7,7 @@
 #include "tx_api.h"
 #include "tx_user.h"
 #include "lwrb/lwrb.h"
-#include "main.h"
+#include "board.h"
 
 
 

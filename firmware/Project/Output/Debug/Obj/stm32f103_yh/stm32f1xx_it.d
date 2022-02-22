@@ -53,7 +53,7 @@ Output/Debug/Obj/stm32f103_yh/stm32f1xx_it.o: \
  D:/app/install/include/stdbool.h \
  ../Libraries/threadx/common/inc/tx_api.h \
  ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
- ../Src/threadx/tx_user.h D:/app/install/include/stdlib.h \
- D:/app/install/include/string.h \
- ../Libraries/lwrb/lwrb/src/include/lwrb/lwrb.h ../Src/boot/main.h \
- ../Src/drivers/bsp_uart1.h ../Src/drivers/bsp_adc.h
+ D:/app/install/include/stdlib.h D:/app/install/include/string.h \
+ ../Src/threadx/tx_user.h ../Libraries/lwrb/lwrb/src/include/lwrb/lwrb.h \
+ ../Src/boot/board.h ../Src/boot/main.h ../Src/drivers/bsp_uart1.h \
+ ../Src/drivers/bsp_adc.h
