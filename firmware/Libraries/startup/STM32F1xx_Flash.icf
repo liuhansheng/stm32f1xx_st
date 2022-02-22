@@ -79,6 +79,8 @@ initialize by symbol __SEGGER_init_ctors    { block ctors };                    
 // Explicit placement in FLASHn
 //
 place in FLASH1                             { section .FLASH1, section .FLASH1.* };
+//place in PARAMETERS                         { section .PARAMETERS, section .PARAMETERS.* };
+//place in FLASH2                             { section .FLASH2, section .FLASH2.* };
 //
 // FLASH Placement
 //

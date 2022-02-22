@@ -80,7 +80,7 @@ static void bsp_tim_init(TIM_HandleTypeDef *htim, TIM_TypeDef *tim)
    }
    __HAL_TIM_ENABLE_IT(htim, TIM_IT_UPDATE);
 }
-static bsp_io_in_init()
+static void bsp_io_in_init(void)
 {
    GPIO_InitTypeDef GPIO_InitStruct = {0};
    GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
@@ -110,7 +110,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim) /** 定时器输入捕�
                {
                    io->result               = io->incapture_value - io->incapture_value_back;
                    io->incapture_value_back = io->incapture_value;
-                   printf("io->result %d\n",io->result);
+                   // printf("io->result %d\n",io->result);
                    return;
                }
            }
