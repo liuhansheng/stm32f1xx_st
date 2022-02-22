@@ -5,6 +5,7 @@
 #include "system.h"
 #include "bsp_adc.h"
 #include "bsp_incapture.h"
+#include "fdb_port.h"
 static float adc_value[6];
 static uint8_t data_uart2;
 static uint8_t data_uart1;
@@ -31,9 +32,14 @@ void test_node_loop(void)
         bsp_get_adc_volt(3,&adc_value[3]);
         bsp_get_adc_volt(4,&adc_value[4]);
         bsp_get_adc_volt(5,&adc_value[5]);
-        printf("adc value %f %f %f %f %f %f \n",adc_value[0],adc_value[1],adc_value[2],
-                               adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
-        sys_delay_ms(100);
+        //printf("adc value %f %f %f %f %f %f \n",adc_value[0],adc_value[1],adc_value[2],
+        //                       adc_value[3],adc_value[4],adc_value[5],adc_value[6]);
+        //static float value = 0;
+        //flashdb_kv_get("spd_max", &value, 4);
+        //value = value + 0.1;
+        //flashdb_kv_set("spd_max", &value, 4);
+        //printf("value %f \n",value);
+        sys_delay_ms(1000);
     }
 
 }
@@ -47,7 +53,6 @@ void test_init(void)
     bsp_di_incapture_init();
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];
-
     tx_thread_create(&_thread,
                      "test_node",
                      test_node_loop,

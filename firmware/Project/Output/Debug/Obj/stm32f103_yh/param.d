@@ -1,14 +1,10 @@
-Output/Debug/Obj/stm32f103_yh/task.o: \
- D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\boot\task.c \
- ../Libraries/threadx/common/inc/tx_api.h \
- ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
+Output/Debug/Obj/stm32f103_yh/param.o: \
+ D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\param\param.c \
+ D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\param\param.h \
  D:/app/install/include/stdlib.h D:/app/install/include/__crossworks.h \
- D:/app/install/include/string.h ../Src/drivers/bsp_leds.h \
- D:/app/install/include/stdint.h ../Src/drivers/bsp_io_out.h \
- D:/app/install/include/stdbool.h ../Src/drivers/bsp_adc.h \
- ../Src/modules/test.h ../Src/param/param.h \
  D:/app/install/include/stdio.h ../Src/boot/board.h \
- ../Src/threadx/tx_user.h \
+ D:/app/install/include/stdint.h D:/app/install/include/stdbool.h \
+ D:/app/install/include/string.h ../Src/threadx/tx_user.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal.h \
  ../Src/boot/stm32f1xx_hal_conf.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_rcc.h \
@@ -56,9 +52,12 @@ Output/Debug/Obj/stm32f103_yh/task.o: \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_wwdg.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_hcd.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_ll_usb.h \
+ ../Libraries/threadx/common/inc/tx_api.h \
+ ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
  ../Src/boot/main.h ../Libraries/FlashDB/inc/flashdb.h \
  D:/app/install/include/time.h D:/app/install/include/sys/time.h \
  ../Libraries/FlashDB/inc/fdb_cfg.h \
  ../Libraries/FlashDB/port/fal/inc/fal.h ../Src/flashdb/fal/fal_cfg.h \
  ../Libraries/FlashDB/port/fal/inc/fal_def.h \
- ../Libraries/FlashDB/inc/fdb_def.h ../Src/boot/main.h
+ ../Libraries/FlashDB/inc/fdb_def.h ../Src/boot/main.h \
+ ../Src/drivers/fdb_port.h

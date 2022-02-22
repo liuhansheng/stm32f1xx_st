@@ -49,9 +49,14 @@ extern "C" {
 
 /* log function. default FDB_PRINT macro is printf() */
 #ifndef FDB_PRINT
-#define FDB_PRINT(...)                 //printf(__VA_ARGS__)
+#define FDB_PRINT(...)                 // printf(__VA_ARGS__)
 #endif
-#define FDB_LOG_PREFIX1()              FDB_PRINT("[FlashDB]" FDB_LOG_TAG)
+/** USR ADD LHS */
+#ifndef FDB_LOG_TAG
+#define FDB_LOG_TAG "LHS TEST ADD"
+#endif
+/** USR ADD LHS */
+#define FDB_LOG_PREFIX1()              FDB_PRINT("[FlashDB] %s", FDB_LOG_TAG)
 #define FDB_LOG_PREFIX2()              FDB_PRINT(" ")
 #define FDB_LOG_PREFIX()               FDB_LOG_PREFIX1();FDB_LOG_PREFIX2()
 #ifdef FDB_DEBUG_ENABLE

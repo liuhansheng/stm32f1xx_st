@@ -269,6 +269,7 @@
 "Output/Debug/Obj/stm32f103_yh/test.o"
 "Output/Debug/Obj/stm32f103_yh/fal_flash_stm32f1_port.o"
 "Output/Debug/Obj/stm32f103_yh/kvdb_basic_sample.o"
+"Output/Debug/Obj/stm32f103_yh/param.o"
 "D:/app/install/lib/libm_v7m_t_le_eabi.a"
 "D:/app/install/lib/libc_v7m_t_le_eabi.a"
 "D:/app/install/lib/libdebugio_v7m_t_le_eabi.a"

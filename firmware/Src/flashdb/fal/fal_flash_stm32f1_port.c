@@ -164,7 +164,7 @@ const struct fal_flash_dev stm32_onchip_flash =
 {
     .name       = "stm32_onchip",
     .addr       = 0x08000000,
-    .len        = 256*1024,
+    .len        = 512*1024,
     .blk_size   = 2*1024,
     .ops        = {init, read, write, erase},
     .write_gran = 32

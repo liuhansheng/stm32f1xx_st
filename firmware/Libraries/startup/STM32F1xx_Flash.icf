@@ -45,7 +45,7 @@ define memory with size = 4G;
 //
 // Combined regions per memory type
 //
-define region FLASH = FLASH1;
+define region FLASH = FLASH1 + FLASH2;
 define region RAM   = RAM1;
 
 //
@@ -79,8 +79,8 @@ initialize by symbol __SEGGER_init_ctors    { block ctors };                    
 // Explicit placement in FLASHn
 //
 place in FLASH1                             { section .FLASH1, section .FLASH1.* };
-//place in PARAMETERS                         { section .PARAMETERS, section .PARAMETERS.* };
-//place in FLASH2                             { section .FLASH2, section .FLASH2.* };
+place in PARAMETERS                         { section .PARAMETERS, section .PARAMETERS.* };
+place in FLASH2                             { section .FLASH2, section .FLASH2.* };
 //
 // FLASH Placement
 //

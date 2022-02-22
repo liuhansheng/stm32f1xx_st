@@ -3,7 +3,7 @@
 #include "bsp_io_out.h"
 #include "bsp_adc.h"
 #include "test.h"
-
+#include "param.h"
 static void rtos_stack_error_handler(TX_THREAD *thread_ptr)
 {
     (void)thread_ptr;
@@ -30,6 +30,7 @@ void tx_application_define(void *first_unused_memory)
     /** 初始化 LED 输出 */
     leds_init();
 
+    param_init();
 
     test_init();
 
