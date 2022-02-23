@@ -66,7 +66,10 @@ void elog_port_output(const char *log, size_t size) {
     #ifdef USING_SEGGER_RTT_DEBUG
         SEGGER_RTT_Write(0, log, size);
     #else
-        printf("log:%s",log);
+        for(uint16_t i = 0; i < size; i++)
+        {
+            printf("%c",log[i]);
+        }
     #endif
 }
 

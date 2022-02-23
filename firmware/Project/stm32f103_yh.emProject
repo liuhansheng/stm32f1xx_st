@@ -323,10 +323,10 @@
       </folder>
       <folder Name="easylogger">
         <file file_name="../Libraries/EasyLogger/easylogger/src/elog.c" />
-        <file file_name="../Libraries/EasyLogger/easylogger/src/elog_buf.c" />
-        <file file_name="../Libraries/EasyLogger/easylogger/src/elog_utils.c" />
         <file file_name="../Libraries/EasyLogger/easylogger/inc/elog.h" />
+        <file file_name="../Libraries/EasyLogger/easylogger/src/elog_utils.c" />
         <file file_name="../Libraries/EasyLogger/easylogger/src/elog_async.c" />
+        <file file_name="../Libraries/EasyLogger/easylogger/src/elog_buf.c" />
       </folder>
     </folder>
     <folder Name="Src">
