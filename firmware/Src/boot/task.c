@@ -34,4 +34,7 @@ void tx_application_define(void *first_unused_memory)
 
     test_init();
 
+    /** elog init*/
+    debug_init();
+
 }
