@@ -32,9 +32,7 @@ void tx_application_define(void *first_unused_memory)
 
     param_init();
 
-    test_init();
-
-    /** elog init*/
     debug_init();
 
+    test_init();
 }

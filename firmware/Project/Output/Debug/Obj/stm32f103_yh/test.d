@@ -63,4 +63,5 @@ Output/Debug/Obj/stm32f103_yh/test.o: \
  D:/app/install/include/sys/time.h ../Libraries/FlashDB/inc/fdb_cfg.h \
  ../Libraries/FlashDB/port/fal/inc/fal.h ../Src/flashdb/fal/fal_cfg.h \
  ../Libraries/FlashDB/port/fal/inc/fal_def.h \
- ../Libraries/FlashDB/inc/fdb_def.h
+ ../Libraries/FlashDB/inc/fdb_def.h ../Src/param/param.h \
+ ../Src/boot/main.h

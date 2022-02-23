@@ -6,9 +6,11 @@
 #include "bsp_adc.h"
 #include "bsp_incapture.h"
 #include "fdb_port.h"
+#include "param.h"
 static float adc_value[6];
 static uint8_t data_uart2;
 static uint8_t data_uart1;
+static float param_test[4];
 void uart2_read_data(uint8_t data)
 {
     data_uart2 = data;
@@ -16,6 +18,13 @@ void uart2_read_data(uint8_t data)
 void uart1_read_data(uint8_t data)
 {
     data_uart1 = data;
+}
+void param_get_init(void)
+{
+    param_get_value_by_group(str,max,&param_test[0]);
+    param_get_value_by_group(str,min,&param_test[1]);
+    param_get_value_by_group(spd,max,&param_test[2]);
+    param_get_value_by_group(spd,min,&param_test[3]);
 }
 void test_node_loop(void)
 {
@@ -39,6 +48,7 @@ void test_node_loop(void)
         //value = value + 0.1;
         //flashdb_kv_set("spd_max", &value, 4);
         //printf("value %f \n",value);
+        
         sys_delay_ms(1000);
     }
 
@@ -51,6 +61,7 @@ void test_init(void)
     bsp_uart1_install_rx_callback(uart1_read_data);
     bsp_task_adc_init();
     bsp_di_incapture_init();
+    param_get_init();
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];
     tx_thread_create(&_thread,

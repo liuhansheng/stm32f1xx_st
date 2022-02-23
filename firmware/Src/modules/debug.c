@@ -17,7 +17,7 @@ void debug_node_loop(void)
         log_i("Hello EasyLogger!%d",sys_get_ms());
         log_d("Hello EasyLogger!%d",sys_get_ms());
         log_v("Hello EasyLogger!%d",sys_get_ms());
-        sys_delay_ms(100);
+        sys_delay_ms(1000);
     }
 
 }

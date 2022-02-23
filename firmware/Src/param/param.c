@@ -1,6 +1,6 @@
 #include "param.h"
 #include "fdb_port.h"
-
+#include "main.h"
 enum {
     MAV_PARAM_TYPE_UINT8 = 0,
     MAV_PARAM_TYPE_INT8,
@@ -49,19 +49,27 @@ typedef struct
     param_value_container_t max_value;     /** 最大值 */
     bool                    verfier;       /** 是否需要边界校验 */
 } param_tbl_t;
-enum {
-    spd_max_e = 0,
-    spd_min_e,
-};
 static param_tbl_t param_tbl[] = {
     [spd_max_e] = {
     .key = "spd_max",
     .type = MAV_PARAM_TYPE_REAL32,
-    .default_value.real32 = 2,
+    .default_value.real32 = 2.0,
     .verfier = false,
 },
     [spd_min_e] = {
     .key = "spd_min",
+    .type = MAV_PARAM_TYPE_REAL32,
+    .default_value.real32 = 0,
+    .verfier = false,
+},
+    [str_max_e] = {
+    .key = "str_max",
+    .type = MAV_PARAM_TYPE_REAL32,
+    .default_value.real32 = 3.3,
+    .verfier = false,
+},
+    [str_min_e] = {
+    .key = "str_min",
     .type = MAV_PARAM_TYPE_REAL32,
     .default_value.real32 = 0,
     .verfier = false,
@@ -94,6 +102,7 @@ void param_init(void)
     uint8_t                 actual_len;
     param_value_container_t value;
     value.uint32 = 0;
+ 
     for(int i = 0; i < ARRAY_LEN(param_tbl); i++)
     {
         if( (0 != kv_get(param_tbl[i].key,&value,type_size[param_tbl[i].type],&actual_len)) || (actual_len != type_size[param_tbl[i].type]) )
@@ -101,6 +110,50 @@ void param_init(void)
             kv_set(param_tbl[i].key,&param_tbl[i].default_value,type_size[param_tbl[i].type]);
         }
     }
+}
+char* param_get_key_from_index(uint8_t index)
+{
+    if(index < param_index_count_e)
+    {
+        return param_tbl[index].key;
+    }
+    else
+    {
+        return NULL;
+    }
+}
+int8_t param_get_index_from_key(char *key)
+{
+    const int16_t max_index = ARRAY_LEN(param_tbl);
 
+    for (int i = 0; i < max_index; i++)
+    {
+        if (0 == strncmp(param_tbl[i].key, key, 16))
+        {
+            return i;
+        }
+    }
 
+    return -1;
+}
+
+void param_get_value(char *key,void *value)
+{
+    int8_t i = param_get_index_from_key(key);
+    if(i >= 0)
+    {
+        flashdb_kv_get(key, value,type_size[param_tbl[i].type]);
+    }
+    else
+    {
+        value = NULL;
+    }
+}
+void param_set_value(char *key, void *value)
+{
+    int8_t i = param_get_index_from_key(key);
+    if(i >= 0)
+    {
+        flashdb_kv_set(key, value,type_size[param_tbl[i].type]);
+    }
 }
