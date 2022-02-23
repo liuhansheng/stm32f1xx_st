@@ -4,3 +4,6 @@
 [submodule "firmware/Libraries/threadx"]
 	path = firmware/Libraries/threadx
 	url = git@github.com:azure-rtos/threadx.git
+[submodule "firmware/Libraries/EasyLogger"]
+	path = firmware/Libraries/EasyLogger
+	url = git@github.com:armink/EasyLogger.git
