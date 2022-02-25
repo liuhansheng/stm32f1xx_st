@@ -31,19 +31,13 @@
 static void w25q_wait_for_ready(void)
 {
     uint8_t status = 1; /** busy 为1 空闲为 0 */
-    uint32_t tick = sys_get_ms();
+    SPI_NSS_LOW();
+    bsp_spi1_transfer_byte(W25X_ReadStatusReg1);
     do
     {
-        if(sys_get_ms() >= (tick + 2000))
-        {
-            printf("waitint time over tick: %d sys: %d\n",tick,sys_get_ms());
-            return;
-        }
-        SPI_NSS_LOW();      
-        bsp_spi1_transfer_byte(W25X_ReadStatusReg1);
         bsp_spi1_transfer(NULL, &status, 1);
-        SPI_NSS_HIGH();
     }while ((status & 0x01) == 0x01);
+    SPI_NSS_HIGH();
 }
 
 static bool w25q_detect_flash_chip(void)
@@ -92,14 +86,13 @@ void w25q_erase_sector(uint32_t erase_addr)
     bsp_spi1_transfer((uint8_t *)(&erase_addr),NULL, 3);
     SPI_NSS_HIGH();
     w25q_wait_for_ready();
-    SPI_NSS_HIGH();
 }
 
 /** 读取 FLASH 数据 */
 bool w25q_read_data(uint32_t read_addr, uint8_t *buffer, uint32_t read_size)
 {
     SPI_NSS_LOW();
-    w25q_wait_for_ready();
+
     bsp_spi1_transfer_byte(W25X_ReadData);
     bsp_spi1_transfer((uint8_t *)(&read_addr),NULL,3);
     bsp_spi1_transfer(NULL,buffer,read_size);
@@ -110,13 +103,12 @@ bool w25q_read_data(uint32_t read_addr, uint8_t *buffer, uint32_t read_size)
 /** 在指定地址开始写入最大一页的数据 */
 void w25q_write_page(uint32_t write_addr, uint8_t *buffer, uint32_t write_size)
 {
-    write_size =( (write_size < W25X_PAGE_SIZE) ? write_size : W25X_PAGE_SIZE);
     W25Q_ENABLE_WRITE();
     SPI_NSS_LOW();
     w25q_wait_for_ready();
     bsp_spi1_transfer_byte(W25X_PageProgram);
     bsp_spi1_transfer((uint8_t *)(&write_addr),NULL,3);
     bsp_spi1_transfer(buffer,NULL,write_size);
-    w25q_wait_for_ready();
     SPI_NSS_HIGH();
+    w25q_wait_for_ready();
 }
