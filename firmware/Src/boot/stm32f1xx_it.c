@@ -24,6 +24,7 @@
 #include "bsp_uarts.h"
 #include "bsp_uart1.h"
 #include "bsp_adc.h"
+#include "bsp_spi.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -268,6 +269,17 @@ void DMA1_Channel5_IRQHandler(void)
 void DMA1_Channel4_IRQHandler(void)
 {
   HAL_DMA_IRQHandler(huart1.hdmatx);
+}
+
+void SPI1_IRQHandler(void)
+{
+  /* USER CODE BEGIN SPI2_IRQn 0 */
+
+  /* USER CODE END SPI2_IRQn 0 */
+  HAL_SPI_IRQHandler(&hspi1);
+  /* USER CODE BEGIN SPI2_IRQn 1 */
+
+  /* USER CODE END SPI2_IRQn 1 */
 }
 /* USER CODE END 1 */
 /******************************************************************************/

@@ -11,12 +11,12 @@ void debug_node_loop(void)
 {
     while(1)
     {
-        log_a("Hello EasyLogger!%d",sys_get_ms());
-        log_e("Hello EasyLogger!%d",sys_get_ms());
-        log_w("Hello EasyLogger!%d",sys_get_ms());
-        log_i("Hello EasyLogger!%d",sys_get_ms());
-        log_d("Hello EasyLogger!%d",sys_get_ms());
-        log_v("Hello EasyLogger!%d",sys_get_ms());
+        //log_a("Hello EasyLogger!%d",sys_get_ms());
+        //log_e("Hello EasyLogger!%d",sys_get_ms());
+        //log_w("Hello EasyLogger!%d",sys_get_ms());
+        //log_i("Hello EasyLogger!%d",sys_get_ms());
+        //log_d("Hello EasyLogger!%d",sys_get_ms());
+        //log_v("Hello EasyLogger!%d",sys_get_ms());
         sys_delay_ms(1000);
     }
 

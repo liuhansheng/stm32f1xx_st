@@ -7,6 +7,9 @@
 #include "bsp_incapture.h"
 #include "fdb_port.h"
 #include "param.h"
+#include "flash_w25q.h"
+#include "bsp_spi.h"
+#include "bsp_spi_flash.h"
 static float adc_value[6];
 static uint8_t data_uart2;
 static uint8_t data_uart1;
@@ -25,6 +28,16 @@ void param_get_init(void)
     param_get_value_by_group(str,min,&param_test[1]);
     param_get_value_by_group(spd,max,&param_test[2]);
     param_get_value_by_group(spd,min,&param_test[3]);
+}
+static uint8_t test_w25q_write[100] = {5,5,5,1,1,1,1,1,1};
+static uint8_t test_w25q_read[100] = {0};
+static uint32_t write_addr = 0x00;
+static void w25q_flash_test(void)
+{
+    w25q_erase_sector(write_addr);
+    w25q_write_page(write_addr, test_w25q_write,100);
+    sys_delay_ms(2);
+    w25q_read_data(write_addr, test_w25q_read,100);
 }
 void test_node_loop(void)
 {
@@ -48,7 +61,7 @@ void test_node_loop(void)
         //value = value + 0.1;
         //flashdb_kv_set("spd_max", &value, 4);
         //printf("value %f \n",value);
-        
+        w25q_flash_test();
         sys_delay_ms(1000);
     }
 
@@ -62,6 +75,8 @@ void test_init(void)
     bsp_task_adc_init();
     bsp_di_incapture_init();
     param_get_init();
+    w25q_init();
+    //SPI_FLASH_Init();
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];
     tx_thread_create(&_thread,

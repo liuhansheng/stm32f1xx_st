@@ -359,6 +359,8 @@
         <file file_name="../Src/drivers/bsp_spi.c" />
         <file file_name="../Src/drivers/fdb_port.c" />
         <file file_name="../Src/drivers/elog_port.c" />
+        <file file_name="../Src/drivers/flash_w25q.c" />
+        <file file_name="../Src/drivers/bsp_spi_flash.c" />
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />
