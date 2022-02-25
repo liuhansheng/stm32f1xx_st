@@ -29,7 +29,7 @@ void param_get_init(void)
     param_get_value_by_group(spd,max,&param_test[2]);
     param_get_value_by_group(spd,min,&param_test[3]);
 }
-static uint8_t test_w25q_write[100] = {5,5,5,1,1,1,1,1,1};
+static uint8_t test_w25q_write[100] = {1,2,3};
 static uint8_t test_w25q_read[100] = {0};
 static uint32_t write_addr = 0x00;
 static void w25q_flash_test(void)

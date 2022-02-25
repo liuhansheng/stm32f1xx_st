@@ -104,8 +104,8 @@ bool w25q_read_data(uint32_t read_addr, uint8_t *buffer, uint32_t read_size)
 void w25q_write_page(uint32_t write_addr, uint8_t *buffer, uint32_t write_size)
 {
     W25Q_ENABLE_WRITE();
-    SPI_NSS_LOW();
     w25q_wait_for_ready();
+    SPI_NSS_LOW();
     bsp_spi1_transfer_byte(W25X_PageProgram);
     bsp_spi1_transfer((uint8_t *)(&write_addr),NULL,3);
     bsp_spi1_transfer(buffer,NULL,write_size);
