@@ -361,6 +361,7 @@
         <file file_name="../Src/drivers/elog_port.c" />
         <file file_name="../Src/drivers/flash_w25q.c" />
         <file file_name="../Src/drivers/bsp_spi_flash.c" />
+        <file file_name="../Src/drivers/bsp_eep.c" />
       </folder>
       <folder Name="threadx/usr">
         <file file_name="../Src/threadx/tx_user.h" />

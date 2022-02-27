@@ -10,10 +10,13 @@
 #include "flash_w25q.h"
 #include "bsp_spi.h"
 #include "bsp_spi_flash.h"
+#include "bsp_eep.h"
+
 static float adc_value[6];
 static uint8_t data_uart2;
 static uint8_t data_uart1;
 static float param_test[4];
+
 void uart2_read_data(uint8_t data)
 {
     data_uart2 = data;
@@ -39,6 +42,20 @@ static void w25q_flash_test(void)
     sys_delay_ms(2);
     w25q_read_data(write_addr, test_w25q_read,100);
 }
+#define  EEP_Firstpage      0x00
+static uint8_t i2c_buff_write[256] = {0,1,2,3,4,5,6,7,8,9,10};
+static uint8_t i2c_buff_read[256] = {10,9,8,7,6,5,4,3,2,1,0};
+static void eep_i2c_test(void)
+{
+    for (int i = 0; i<100 ; i++)
+    {
+        i2c_buff_write[i] = i;
+    }
+    epp_write_data(EEP_Firstpage,i2c_buff_write,20);
+    sys_delay_ms(10);
+    epp_read_data(EEP_Firstpage,i2c_buff_read,20);
+    sys_delay_ms(1000);
+}
 void test_node_loop(void)
 {
    static uint32_t s;
@@ -62,6 +79,7 @@ void test_node_loop(void)
         //flashdb_kv_set("spd_max", &value, 4);
         //printf("value %f \n",value);
         w25q_flash_test();
+        eep_i2c_test();
         sys_delay_ms(1000);
     }
 
@@ -76,6 +94,7 @@ void test_init(void)
     bsp_di_incapture_init();
     param_get_init();
     w25q_init();
+    epp_init();
     //SPI_FLASH_Init();
     static TX_THREAD _thread;
     static uint8_t   _thread_stack[1024];

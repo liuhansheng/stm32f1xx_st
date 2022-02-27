@@ -65,4 +65,4 @@ Output/Debug/Obj/stm32f103_yh/test.o: \
  ../Libraries/FlashDB/port/fal/inc/fal_def.h \
  ../Libraries/FlashDB/inc/fdb_def.h ../Src/param/param.h \
  ../Src/boot/main.h ../Src/drivers/flash_w25q.h ../Src/drivers/bsp_spi.h \
- ../Src/drivers/bsp_spi_flash.h
+ ../Src/drivers/bsp_spi_flash.h ../Src/drivers/bsp_eep.h

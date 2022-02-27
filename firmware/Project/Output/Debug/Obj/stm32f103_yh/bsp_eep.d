@@ -1,18 +1,23 @@
-Output/Debug/Obj/stm32f103_yh/bsp_i2c1.o: \
- D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\drivers\bsp_i2c1.c \
- ../Src/boot/main.h ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal.h \
+Output/Debug/Obj/stm32f103_yh/bsp_eep.o: \
+ D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\drivers\bsp_eep.c \
+ D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\drivers\bsp_i2c1.h \
+ D:/app/install/include/stdint.h D:/app/install/include/stdlib.h \
+ D:/app/install/include/__crossworks.h D:/app/install/include/stdbool.h \
+ ../Src/boot/board.h D:/app/install/include/string.h \
+ ../Src/threadx/tx_user.h \
+ ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal.h \
  ../Src/boot/stm32f1xx_hal_conf.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_rcc.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_def.h \
  ../Libraries/cmsis/Device/ST/STM32F1xx/Include/stm32f1xx.h \
  ../Libraries/cmsis/Device/ST/STM32F1xx/Include/stm32f103xe.h \
- ../Libraries/cmsis/Include/core_cm3.h D:/app/install/include/stdint.h \
+ ../Libraries/cmsis/Include/core_cm3.h \
  ../Libraries/cmsis/Include/cmsis_version.h \
  ../Libraries/cmsis/Include/cmsis_compiler.h \
  ../Libraries/cmsis/Include/cmsis_gcc.h \
  ../Libraries/cmsis/Device/ST/STM32F1xx/Include/system_stm32f1xx.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/Legacy/stm32_hal_legacy.h \
- D:/app/install/include/stddef.h D:/app/install/include/__crossworks.h \
+ D:/app/install/include/stddef.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_rcc_ex.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_gpio.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_gpio_ex.h \
@@ -47,9 +52,7 @@ Output/Debug/Obj/stm32f103_yh/bsp_i2c1.o: \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_wwdg.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_hal_hcd.h \
  ../Libraries/stm32f1xx_hal_driver/Inc/stm32f1xx_ll_usb.h \
- D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\drivers\bsp_i2c1.h \
- D:/app/install/include/stdlib.h D:/app/install/include/stdbool.h \
- ../Src/boot/board.h D:/app/install/include/string.h \
- ../Src/threadx/tx_user.h ../Libraries/threadx/common/inc/tx_api.h \
+ ../Libraries/threadx/common/inc/tx_api.h \
  ../Libraries/threadx/ports/cortex_m3/gnu/inc/tx_port.h \
- ../Src/boot/main.h
+ ../Src/boot/main.h ../Src/boot/main.h \
+ D:\1995work\studyMCU\stm32f1xx_st\firmware\Src\drivers\bsp_eep.h
